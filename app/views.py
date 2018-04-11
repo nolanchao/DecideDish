@@ -110,10 +110,6 @@ def results():
 
 @app.route('/restart')
 def restart():
-    return render_template('preferences.html')
-
-@app.route('/logout')
-def logout():
     session.pop('username', None)
     return render_template('login.html')
 
