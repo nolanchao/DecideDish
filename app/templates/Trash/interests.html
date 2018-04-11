@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class= "section">
+      <a href="">Home</a>
+    </div>
+    <h2>Add A Trip</h2>
+    <form action="" method="post" name="login">
+      <div class="divider"></div>
+      <div class="section">
+         <p>
+          Trip Name:<br>
+          {{ form.trip_name }}<br>
+          <!-- Additional form fields for the customer should go here -->
+        </p>
+        <p>
+          Destination:<br>
+          {{ form.destination }}<br>
+          <!-- Additional form fields for the customer should go here -->
+        </p>
+        <p>
+          Friend:<br>
+          {{ form.friend }}<br>
+          <!-- Additional form fields for the customer should go here -->
+        </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+
+
+      </div>
+      <p><input type="submit" value="Create Trip"></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

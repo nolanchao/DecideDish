@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+ {{ super() }}
+{% block title %}
+    Results
+{% endblock %}
+
+<!-- 2. extend content here from base -->
+{% block content %}
+<body>
+
+You searched for: {{ cuisine }}<br>
+Price criteria: {{ priceInputSign }}<br>
+Distance criteria: {{ rangeInputSign }}
+
+<br>
+    We found {{ searchresults }} restaurants that matched your criteria.
+    <br>
+    <a href= /restart id="restart">Not satisfied? Click here to search again.</a>
+    <br>
+    <br>
+<div class ="table">
+
+</div>
+    <br>
+
+     
+{% endblock %}

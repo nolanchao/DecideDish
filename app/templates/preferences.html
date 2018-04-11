@@ -1,0 +1,48 @@
+<!-- 1. extend from base-->
+
+{% extends "base.html" %}
+ {{ super() }}
+{% block title %}
+	Preferences
+{% endblock %}
+
+<!-- 2. extend content here from base -->
+{% block content %}
+<h1>{{ session.username }}? You all are VIP! Welcome to DecideDish.</h1>
+<div class="main-container">
+	<form action = "/results" method = "POST">
+		<label class="survey-item sm-label">What type of food are you looking for?		</label>
+			<span>			</span>
+				<input class="action-button" id="cuisine" type="hidden" name="cuisine">
+					<ol id="selectable">
+					    <li class="ui-state-default">Chinese</li>
+					    <li class="ui-state-default">Pizza</li>
+					    <li class="ui-state-default">Mexican</li>
+					    <li class="ui-state-default">Italian</li>
+					    <li class="ui-state-default">Ethiopian</li>
+					    <li class="ui-state-default">Sandwiches</li>
+					    <li class="ui-state-default">Steak</li>
+					    <li class="ui-state-default">French</li>
+					    <li class="ui-state-default">Diners</li>
+					    <li class="ui-state-default">Burgers</li>
+					    <li class="ui-state-default">Barbeque</li>
+					</ol>
+		<label class="survey-item sm-label">What's your price range?
+			<span>
+				<input type="range" id="priceInput" name="priceInput" step="1" min="1" max="4" value="1"><label id="rangeText" />
+			</span>
+		</label>
+		<label class="survey-item sm-label">What's your distance range?
+			<span>
+				<input type="range" id="rangeInput" name="rangeInput" step="804" min="804" max="16080" value="804"><label id="distancerangeText" />
+			</span>
+		</label>
+		
+			<br><br>
+			<span>
+				<input class="action-button" id="home" type="submit" value="Find us some food!">
+			</span>
+	</form>
+
+</div>
+{% endblock %}

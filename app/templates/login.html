@@ -1,0 +1,23 @@
+<!-- 1. extend from base-->
+{% extends "base.html" %}
+{{ super() }}
+{% block body %}
+
+
+{% endblock %}
+{{ super() }}
+<!-- 2. extend content here from base -->
+{% block content %}
+<div class="container">
+<h1>Hi there! Welcome to DecideDish</h1>
+<div class="main-container">
+	<h3>Let's get you logged in!</h3><br>
+	<!-- 3. needs to modify the form attributes here -->
+	<form action = "/preferences" method = "POST"> 
+		<!-- 4. add some input/labels here -->
+		Group Name: <input type="text" id="username" name="username"><br><br>
+		<input class="action-button" id="login" type="submit" value="Submit">
+	</form>
+</div>
+</div>
+{% endblock %}
