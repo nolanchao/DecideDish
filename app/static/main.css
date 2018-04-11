@@ -161,14 +161,13 @@ input[type=range]::-webkit-slider-runnable-track {
 	display: inline-block;
 	color: #00BFFF;
 	font-weight: bold;
-	height: 5rem;
-	line-height: 5rem;
+	height: 2rem;
+	line-height: 2rem;
 	margin-left: .1rem;
 }
 
 #username {
 	margin-right: .7rem;
-	color: red;
 }
 
 #logout {
