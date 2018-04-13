@@ -74,7 +74,7 @@ def results():
             'radius' : radius
         }
         headers = {
-            "Authorization": "Bearer LeRUg8BzEunmxPPWVlo01T4CCEJjQ2SmZha8CueH9oZ9H1DNA2bYkAEp6GzCnFppLMW-JJhqmSXxD2AoJ2OgSfXb1bbzHLZ07QXJTWnfOD99RYWQcjS45eT5B8HGWnYx",
+            "Authorization": "Bearer API KEY",
             "content-type": "application/json"
         }
         response = requests.get(url=url, params=params, headers=headers)
