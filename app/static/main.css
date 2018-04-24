@@ -95,8 +95,8 @@ a {
 input[type="text"], input[type="range"] {
 	border: 1px solid #bdc3c7;
 	border-radius: 2px;
-	margin-left: 1rem;
 	vertical-align: middle;
+	-webkit-appearance: none;
 }
 
 input[type=range]{
@@ -120,7 +120,6 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .action-button {
-	margin-left: 2rem;
 	background-color: #00BFFF;
 	border: none;
 	border-bottom: 3px solid #00BFFF;
@@ -130,7 +129,6 @@ input[type=range]::-webkit-slider-runnable-track {
 	font-size: 1rem;
 	font-weight: bold;
 	padding: 4px;
-	width: 10rem;
 }
 
 .action-button:hover {
@@ -140,21 +138,7 @@ input[type=range]::-webkit-slider-runnable-track {
 #site-title-wrapper {
 	display: inline-block;
 	height: 5rem;
-	width: 15%;
-}
-
-#site-icon-wrapper {
-	display: inline-block;
-	margin-left: 1rem;
-	margin-top: -.5rem;
-	vertical-align: middle;
-	width: 2.5rem;
-}
-
-#site-icon-wrapper img {
-	display: inline-block;
-	max-height: 100%;
-	max-width: 100%
+	width: 100%;
 }
 
 #site-title {
@@ -163,15 +147,21 @@ input[type=range]::-webkit-slider-runnable-track {
 	font-weight: bold;
 	height: 2rem;
 	line-height: 2rem;
-	margin-left: .1rem;
 }
 
-#username {
-	margin-right: .7rem;
+#groupname {
+	color: grey;
+}
+
+.already_input {
+	color: grey;
 }
 
 #logout {
-	margin-left: .5em;
+	display: inline-block;
+	height: 2rem;
+	line-height: 2rem;
+	padding-right: 2rem;
 }
 
 #logout-button {
@@ -195,12 +185,12 @@ input[type=range]::-webkit-slider-runnable-track {
 	background: #ecf0f1;
 	border-radius: 4px;
 	box-shadow: 0px 2px 10px 2px #95a5a6;
-	display: block;
-	min-height: 50vh;
-	margin: 2rem 0 0 25%;
+	padding-top: 10px;
+	display: inline-block;
+	min-height: 20vh;
 	padding: 1rem;
-	text-align: left;
-	width: 50%;
+	max-width: 450px;
+	text-align: center;
 }
 
 .survey-item, .result-item {
@@ -221,10 +211,8 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .sm-label {
 	font-size: 13px;
-	font-weight: 500;
+	font-weight: 1000;
 	color: #333E48;
-	margin-bottom: 8px;
-	margin-left: 1rem;
 	display: inline-block;
 }
 
@@ -241,9 +229,7 @@ input[type=range]::-webkit-slider-runnable-track {
 	line-height: 1.4;
 }
 
-.table {
-	display: inline-block;
-}
+
 
 .resultstable, td, tr, th {
 	text-align: center;
@@ -256,7 +242,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 th {
 	font-weight: bold;
-	background-color: grey;
+	background-color: #00BFFF;
 	padding: 5px;
 }
 
@@ -270,6 +256,17 @@ th {
 	font-size: 1em; 
 }
 
+#login_table { 
+	text-align: center;
+	padding: 5px;
+}
+
+#login_table td, #login_table tr { 
+	text-align: center;
+	padding: 5px;
+	border: 0;
+}
+
 #selectable .ui-selecting { 
 	background: #A9A9A9; 
 }
@@ -279,19 +276,133 @@ th {
 }
 
 #selectable { 
-	list-style-type: none; margin: 0; padding: 0; 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
 }
 
-#selectable li { 
+#selectable div { 
 	margin: 3px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	float: left; 
-	width: 130px; 
-	font-size: 1.5em; text-align: center; vertical-align: middle;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: inline-block; 
+	width: 130px;
+	height: 20px;
+	font-size: 1em; 
+	text-align: center; 
+	vertical-align: middle;
 	background-color: #FFFFFF;
 }
 
+
+
+.emphasis {
+	font-weight: bold;
+	display: inline;
+}
+
+.center-container {
+	text-align: center;
+
+}
+
+#preferences_selector {
+	display: inline-block; 
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#preferences_selector tr {
+	border: 0;
+}
+
+#preferences_selector td {
+	border: 0;
+}
+
+.unit_label {
+	width: 100px;
+}
+
+#get_started {
+	text-align: left;
+	background-color: #00BFFF;
+	padding: 10px;
+}
+
+#url_share {
+	text-align: center;
+}
+
+#myInput {
+	margin: 3px;
+}
+
+#instructions {
+	width: 346px;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+#results_count {
+	display: inline;
+	font-weight: bold;
+}
+
+#yourpreferences td {
+	padding: 3px;
+}
+
+#yourpreferences {
+	margin-bottom: 10px;
+}
+
+#leftheader {
+	display: inline-block;
+	float: left;
+}
+
+#rightheader {
+	display: inline-block;
+	float: right;	
+}
+
+.table {
+	display: inline-block;
+}
+
+.resultstable {
+    table-layout: fixed;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px;
+}
+
 .resultimage {
-  height: 150px;
+	width: 200px;
+  	height: 150px;
+}
+
+.emoji {
+	width: 12px;
+	height: 12px;
+	padding-top: 2px;
+}
+
+#copyicon {
+	-webkit-appearance: none;
+	width: 12px;
+	height: 12px;
+}
+
+#copy_button {
+	-webkit-appearance: none;
+	background-color: #FFFFFF;
+	border: 1px solid grey;
+}
+
+#how_to {
+	text-align: center;
+	font-weight: bold;
 }

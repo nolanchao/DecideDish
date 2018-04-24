@@ -1,5 +1,5 @@
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask.ext.wtf import Form
 from wtforms import StringField, IntegerField
 from flask_wtf.html5 import EmailField

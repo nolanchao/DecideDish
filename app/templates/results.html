@@ -8,57 +8,69 @@
 {% block content %}
 <body>
 
-You searched for: {{ cuisine }}<br>
-Price criteria: {{ priceInputSign }}<br>
-Distance criteria: {{ rangeInputSign }}
+<h3>{{ session.name }}, after {{ count }} votes, the results are in for group ID <div class=emphasis>{{ session.groupname }}</div>!</h3><br>
 
+<center><table id="yourpreferences">
+<tbody>
+<tr>
+<td>The most popular cuisines for the group were: </td>
+<td> {{ cuisine }}</td>
+</tr>
+<tr>
+<td>The maximum mutual price level was:</td>
+<td> {{ priceInputSign }}</td>
+</tr>
+<tr>
+<td>The mutual distance range from {{ session.city }}, {{ session.state }} was: </td>
+<td>{{ radiusinmiles }}</td>
+</tr>
+</tbody>
+</table></center>
+
+
+    We found <div id="results_count">{{ searchresults }}</div> restaurants that matched your criteria.
 <br>
-    We found {{ searchresults }} restaurants that matched your criteria.
-    <br>
-    <a href= /restart id="restart">Not satisfied? Click here to search again.</a>
-    <br>
-    <br>
-<div class ="table">
+
+
+
   <table class="resultstable">
-    <tr>
-      <th>Restaurant Name</th>
+    <tr id=header>
+      <th>Name</th>
       <th>Rating</th> 
       <th>Price</th>
       <th>Image</th>
     </tr>
-    <tr>
-      <td>{{ allresults['1name'] }} </td>
+    <tr class=results>
+      <td class="namecolumn"><a href= {{ allresults['0link'] }}>{{ allresults['0name'] }} </a></td>
+      <td>{{ allresults['0rating'] }} </td> 
+      <td>{{ allresults['0price'] }}</td>
+      <td class="resultimage"><img src= {{ allresults['0image'] }} class="resultimage"></td>
+    </tr>
+    <tr class=results>
+      <td class="namecolumn"><a href= {{ allresults['1link'] }}>{{ allresults['1name'] }} </a></td>
       <td>{{ allresults['1rating'] }} </td> 
       <td>{{ allresults['1price'] }}</td>
-      <td><img src= {{ allresults['1image'] }} class="resultimage"></td>
+      <td class="resultimage"><img src= {{ allresults['1image'] }} class="resultimage"></td>
     </tr>
-    <tr>
-      <td>{{ allresults['2name'] }} </td>
+    <tr class=results>
+      <td class="namecolumn"><a href= {{ allresults['2link'] }}>{{ allresults['2name'] }} </a></td>
       <td>{{ allresults['2rating'] }} </td> 
       <td>{{ allresults['2price'] }}</td>
-      <td><img src= {{ allresults['2image'] }} class="resultimage"></td>
+      <td class="resultimage"> <img src= {{ allresults['2image'] }} class="resultimage"></td>
     </tr>
-    <tr>
-      <td>{{ allresults['3name'] }} </td>
+    <tr class=results>
+      <td class="namecolumn"><a href= {{ allresults['3link'] }}>{{ allresults['3name'] }} </a></td>
       <td>{{ allresults['3rating'] }} </td> 
       <td>{{ allresults['3price'] }}</td>
-      <td><img src= {{ allresults['3image'] }} class="resultimage"></td>
+      <td class="resultimage"><img src= {{ allresults['3image'] }} class="resultimage"></td>
     </tr>
-    <tr>
-      <td>{{ allresults['4name'] }} </td>
+    <tr class=results>
+      <td class="namecolumn"><a href= {{ allresults['4link'] }}>{{ allresults['4name'] }} </a></td>
       <td>{{ allresults['4rating'] }} </td> 
       <td>{{ allresults['4price'] }}</td>
-      <td><img src= {{ allresults['4image'] }} class="resultimage"></td>
-    </tr>
-    <tr>
-      <td>{{ allresults['5name'] }} </td>
-      <td>{{ allresults['5rating'] }} </td> 
-      <td>{{ allresults['5price'] }}</td>
-      <td><img src= {{ allresults['5image'] }} class="resultimage"></td>
+      <td class="resultimage"><img src= {{ allresults['4image'] }} class="resultimage"></td>
     </tr> 
   </table>
-</div>
-    <br>
-
-     
+  <br>  <br>
+    <p><a href= /preferences id="restart">Not satisfied? Click here to search again.</a></p>
 {% endblock %}

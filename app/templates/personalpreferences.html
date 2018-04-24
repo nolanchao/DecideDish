@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+ {{ super() }}
+{% block title %}
+    Results
+{% endblock %}
+
+<!-- 2. extend content here from base -->
+{% block content %}
+<body>
+<br>
+<h3>Alright, <div class=emphasis>{{ session.name }}</div>! Here's what we got!</h3><br>
+
+
+<center><table id="yourpreferences">
+<tbody>
+<tr>
+<td>Your group ID:</td>
+<td>{{ groupname }}</td>
+</tr>
+<tr>
+<td>Your name:</td>
+<td>{{ session.name }}</td>
+</tr>
+<tr>
+<td>You preferenced:</td>
+<td> {{ cuisine }}</td>
+</tr>
+<tr>
+<td>Your price criteria:</td>
+<td> {{ priceInputSign }}</td>
+</tr>
+<tr>
+<td>Your distance criteria:</td>
+<td>{{ rangeInputSign }}</td>
+</tr>
+</tbody>
+</table>
+
+
+</center>
+
+
+    <a href= /preferences id="restart">Not what you wanted? Click here to search again.</a><br>
+    <br>
+    <a href= /results id="results">It looks like {{ count }}. Click here to see your group's results.</a>
+    <br>
+    <br>
+    <br>
+
+     
+{% endblock %}

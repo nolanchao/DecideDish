@@ -8,15 +8,80 @@ var rangeValues =
     "4": "$$$$"
 };
 
+var distancerangeValues =
+{
+    ".5": "$",
+    "1": "$$",
+    "1.5": "$$$",
+    "4": "$$$$"
+};
+
+
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+  /* Select the text field */
+  copyText.select();
+  /* Copy the text inside the text field */
+  document.execCommand("Copy");
+  /* Alert the copied text */
+  alert('Link copied. ' + copyText.value + '\n\nNow you can paste and share with your friends!');
+};
+
+var copy = function(elementId) {
+
+    var input = document.getElementById(elementId);
+    var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+
+    if (isiOSDevice) {
+      
+        var editable = input.contentEditable;
+        var readOnly = input.readOnly;
+
+        input.contentEditable = true;
+        input.readOnly = false;
+
+        var range = document.createRange();
+        range.selectNodeContents(input);
+
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        input.setSelectionRange(0, 999999);
+        input.contentEditable = editable;
+        input.readOnly = readOnly;
+
+    } else {
+        input.select();
+    }
+
+    document.execCommand('copy');
+}
+
 
 $(document).ready(function () {
 
     // on page load, set the text of the label based the value of the range
-    $('#rangeText').text(rangeValues[$('#priceInput').val()]);
+    $('#pricerangeText').text(rangeValues[$('#priceInput').val()]);
 
     // setup an event handler to set the text when the range value is dragged (see event for input) or changed (see event for change)
     $('#priceInput').on('input change', function () {
-        $('#rangeText').text(rangeValues[$(this).val()]);
+        $('#pricerangeText').text(rangeValues[$(this).val()]);
+    });
+
+});
+
+
+
+$(document).ready(function () {
+
+    // on page load, set the text of the label based the value of the range
+    $('#distancerangeText').text([$('#rangeInput').val()]);
+
+    // setup an event handler to set the text when the range value is dragged (see event for input) or changed (see event for change)
+    $('#rangeInput').on('input change', function () {
+        $('#distancerangeText').text([$(this).val()]);
     });
 
 });
@@ -94,3 +159,13 @@ $('#selectable').click(function() {
     console.log(selectedVals);
 });
 
+
+$(document).ready(function RowHider () {
+
+  var results_count = parseInt(document.getElementById("results_count").innerHTML);
+  var row_count = results_count+3;
+  console.log(results_count);
+  console.log(row_count);
+    $("tr:gt(" + row_count + ")").hide();
+
+});

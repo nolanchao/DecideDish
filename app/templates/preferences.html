@@ -8,41 +8,46 @@
 
 <!-- 2. extend content here from base -->
 {% block content %}
-<h1>{{ session.username }}? You all are VIP! Welcome to DecideDish.</h1>
+<h1>{{ session.name }}, dining in {{ session.city }}, {{ session.state }} ? You're VIP!</h1>
 <div class="main-container">
-	<form action = "/results" method = "POST">
-		<label class="survey-item sm-label">What type of food are you looking for?		</label>
-			<span>			</span>
+	<div class="center-container">
+	<form action = "/personalpreferences" method = "POST">
+		<label class="survey-item sm-label">What type of food would you prefer?</label>
 				<input class="action-button" id="cuisine" type="hidden" name="cuisine">
-					<ol id="selectable">
-					    <li class="ui-state-default">Chinese</li>
-					    <li class="ui-state-default">Pizza</li>
-					    <li class="ui-state-default">Mexican</li>
-					    <li class="ui-state-default">Italian</li>
-					    <li class="ui-state-default">Ethiopian</li>
-					    <li class="ui-state-default">Sandwiches</li>
-					    <li class="ui-state-default">Steak</li>
-					    <li class="ui-state-default">French</li>
-					    <li class="ui-state-default">Diners</li>
-					    <li class="ui-state-default">Burgers</li>
-					    <li class="ui-state-default">Barbeque</li>
-					</ol>
-		<label class="survey-item sm-label">What's your price range?
+					<div id="selectable">
+					    <div class="ui-state-default">Chinese <img src ="/static/images/chinese.png" class="emoji"></div>
+					    <div class="ui-state-default">Pizza 🍕</div>
+					    <div class="ui-state-default">Mexican 🌯</div>
+					    <div class="ui-state-default">Italian 🇮🇹 </div>
+					    <div class="ui-state-default">Ethiopian 🇪🇹</div>
+					    <div class="ui-state-default">Sandwiches <img src ="/static/images/sandwich.png" class="emoji"></div>
+					    <div class="ui-state-default">Steak <img src ="/static/images/steak.png" class="emoji"></div>
+					    <div class="ui-state-default">French 🇫🇷</div>
+					    <div class="ui-state-default">Diners 🍽</div>
+					    <div class="ui-state-default">Burgers 🍔</div>
+					    <div class="ui-state-default">Barbeque 🔥 </div>
+					    <div class="ui-state-default">Ramen 🍜</div>
+					</div>
+
+				<table id="preferences_selector">
+				<tbody>
+					<tr>
+						<td><label class="survey-item sm-label">What's your price range?</label></td>
+						<td><input type="range" id="priceInput" name="priceInput" step="1" min="1" max="4" value="1">
+						<td><label id="pricerangeText" class="unit_label"></label></td>
+					</tr>
+					<tr>
+						<td><label class="survey-item sm-label">What's your distance range?</label></td>
+						<td><input type="range" id="rangeInput" name="rangeInput" step=".5" min=".5" max="20" value="5"></td>
+						<td class="unit_label"><label id="distancerangeText"></label> mi</td>
+					</tr>
+				</tbody>	
+				</table>
+
 			<span>
-				<input type="range" id="priceInput" name="priceInput" step="1" min="1" max="4" value="1"><label id="rangeText" />
-			</span>
-		</label>
-		<label class="survey-item sm-label">What's your distance range?
-			<span>
-				<input type="range" id="rangeInput" name="rangeInput" step="804" min="804" max="16080" value="804"><label id="distancerangeText" />
-			</span>
-		</label>
-		
-			<br><br>
-			<span>
-				<input class="action-button" id="home" type="submit" value="Find us some food!">
+				<input class="action-button" id="home" type="submit" value="Submit my preferences!">
 			</span>
 	</form>
-
+	</div>
 </div>
 {% endblock %}

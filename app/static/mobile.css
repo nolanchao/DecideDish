@@ -1,0 +1,68 @@
+
+
+#instructions {
+	background: #00BFFF;
+    border-radius: 4px;
+    box-shadow: 0px 2px 10px 2px #95a5a6;
+    padding-top: 10px;
+    display: inline-block;
+    min-height: 20vh;
+    padding: 1rem;
+    text-align: center;
+}
+
+#content {
+	margin-top: 0px;
+}
+
+#site-title-wrapper {
+	height: 3rem;
+}
+
+.main-container {
+	margin-top: 10px;
+}
+
+#selectable div {
+	width: 105px;
+}
+
+footer {
+	height: auto;
+	margin-top: 1em;
+}
+
+.resultimage {
+	width: 100px;
+	height: 75px;
+}
+
+.namecolumn {
+	width: 100px;
+}
+
+#yourpreferences {
+	max-width: 100%;
+}
+
+#resultstable {
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+#copyicon {
+	-webkit-appearance: none;
+	width: 12px;
+	height: 12px;
+}
+
+#copy_button {
+	-webkit-appearance: none;
+	background-color: #FFFFFF;
+	border: 1px solid grey;
+}
+
+#leftheader {
+	display: inline-block;
+	float: left;
+}

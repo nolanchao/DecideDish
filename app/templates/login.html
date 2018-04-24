@@ -1,23 +1,71 @@
 <!-- 1. extend from base-->
 {% extends "base.html" %}
 {{ super() }}
-{% block body %}
 
-
+{% block title %}
+	Login
 {% endblock %}
-{{ super() }}
-<!-- 2. extend content here from base -->
+
+
 {% block content %}
+<!-- One-off, no stylesheet since this is just for the Logout button.  -->
+<style>
+#logout {
+    display: none;
+}
+</style>
+
 <div class="container">
-<h1>Hi there! Welcome to DecideDish</h1>
+<h1>Welcome to Where2Eat!</h1>
+<h2>We make picking restaurants for groups easy.</h2><br>
+
+<div id="instructions">
+	<div id="get_started">
+	<center><p id="how_to">How to get started</p></center><br>
+	<p>1. Share this link with your friends:</p>
+	
+	<div id="url_share">
+
+		<input type="text" id="myInput" value="{{ urlshare }}" />
+		<button onclick="copy('myInput')">Copy text <img src ="/static/images/copyicon.png" id="copyicon"></button>
+	</div>
+
+	<p>2. Enter your name{{ group_decision_required }} and vote for your preferences.</p>
+	<p>3. After everyone votes, see what the group wants!</p>
+	</div>
+</div>
+<br>
 <div class="main-container">
-	<h3>Let's get you logged in!</h3><br>
+
 	<!-- 3. needs to modify the form attributes here -->
 	<form action = "/preferences" method = "POST"> 
 		<!-- 4. add some input/labels here -->
-		Group Name: <input type="text" id="username" name="username"><br><br>
-		<input class="action-button" id="login" type="submit" value="Submit">
+		<center><table id="login_table">
+			<tbody>
+				<tr>
+					<td>Your group ID is:</td>
+					<td><input type="text" id="groupname" name="groupname" value= {{ groupname }} readonly></td>
+				</tr>
+				<tr>
+					<td>Enter your name:</td>
+					<td><input type="text" id="name" name="name" required></td>
+				</tr>
+				<tr>
+					<td>Your dining city:</td>
+					<td><input type="text" id="city" name="city" required value = "{{ group_city }}" {{ readonly }} {{ already_input }}></td>
+				</tr>
+				<tr>
+					<td>Your dining state:</td>
+					<td><input type="text" id="city" name="state" maxlength="2" required value = "{{ group_state }}" {{ readonly }} {{ already_input }}></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input class="action-button" id="login" type="submit" value="Get started!"></input>
 	</form>
+
+<br><br>
+
 </div>
 </div>
 {% endblock %}
