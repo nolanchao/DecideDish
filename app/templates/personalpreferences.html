@@ -26,11 +26,11 @@
 <td> {{ cuisine }}</td>
 </tr>
 <tr>
-<td>Your price criteria:</td>
+<td>Your max price range:</td>
 <td> {{ priceInputSign }}</td>
 </tr>
 <tr>
-<td>Your distance criteria:</td>
+<td>Your max distance range from {{ session.city }}, {{ session.state }}:</td>
 <td>{{ rangeInputSign }}</td>
 </tr>
 </tbody>
@@ -40,12 +40,9 @@
 </center>
 
 
-    <a href= /preferences id="restart">Not what you wanted? Click here to search again.</a><br>
+    <a href= /preferences id="restart">Not what you picked? Click here to try again.</a><br>
     <br>
-    <a href= /results id="results">It looks like {{ count }}. Click here to see your group's results.</a>
-    <br>
-    <br>
-    <br>
+    <p class="results"><a href= /results id="results">It looks like {{ count }}</a></p>
 
      
 {% endblock %}

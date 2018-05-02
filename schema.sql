@@ -26,7 +26,8 @@ create table preferences (
 	french integer, 
 	diners integer, 
 	burgers integer, 
-	barbecue integer
+	barbecue integer,
+	ramen integer
 );
 
 

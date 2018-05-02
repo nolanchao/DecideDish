@@ -8,16 +8,16 @@
 
 
 {% block content %}
-<!-- One-off, no stylesheet since this is just for the Logout button.  -->
+<!-- One-off, no stylesheet since this is just for the Logout button and Log-in status.  -->
 <style>
-#logout {
+#logout, #logged_in_as {
     display: none;
 }
 </style>
 
 <div class="container">
 <h1>Welcome to Where2Eat!</h1>
-<h2>We make picking restaurants for groups easy.</h2><br>
+<h2>We make easy for groups to decide on restaurants.</h2><br>
 
 <div id="instructions">
 	<div id="get_started">
@@ -26,12 +26,15 @@
 	
 	<div id="url_share">
 
-		<input type="text" id="myInput" value="{{ urlshare }}" />
+		<input type="text" id="myInput" value="{{ urlshare }}" size="22"/>
 		<button onclick="copy('myInput')">Copy text <img src ="/static/images/copyicon.png" id="copyicon"></button>
 	</div>
 
 	<p>2. Enter your name{{ group_decision_required }} and vote for your preferences.</p>
 	<p>3. After everyone votes, see what the group wants!</p>
+	<br>
+	<p>{{ group_count_status }}	{{ group_voting_status }}</p>
+		<div class= {{ hidden }} ><a href= {{ groupname }}/results id="results">Click here to see your group's results!</a></div>
 	</div>
 </div>
 <br>

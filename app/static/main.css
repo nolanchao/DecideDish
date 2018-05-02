@@ -19,6 +19,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	color: black;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -137,7 +138,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 #site-title-wrapper {
 	display: inline-block;
-	height: 5rem;
+	height: auto;
 	width: 100%;
 }
 
@@ -161,7 +162,8 @@ input[type=range]::-webkit-slider-runnable-track {
 	display: inline-block;
 	height: 2rem;
 	line-height: 2rem;
-	padding-right: 2rem;
+	padding-right: 5px;
+	text-decoration: underline;
 }
 
 #logout-button {
@@ -191,6 +193,7 @@ input[type=range]::-webkit-slider-runnable-track {
 	padding: 1rem;
 	max-width: 450px;
 	text-align: center;
+	margin-top: 20px;
 }
 
 .survey-item, .result-item {
@@ -366,6 +369,8 @@ th {
 #rightheader {
 	display: inline-block;
 	float: right;	
+	text-align: right;
+	margin-top: 10px;
 }
 
 .table {
@@ -404,5 +409,29 @@ th {
 
 #how_to {
 	text-align: center;
+	font-weight: bold;
+}
+
+#logged_in_as {
+	display: inline;
+	padding-right: 5px;
+	text-align: right;
+}
+
+p.results {
+	font-weight: bold;
+	width: auto;
+	display: inline-block;
+	padding: 5px;
+	text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+#zero {
+	font-size: 16px;
+	margin-top: 10px;
 	font-weight: bold;
 }

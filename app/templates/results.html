@@ -1,3 +1,4 @@
+<!-- 1. extend from base-->
 {% extends "base.html" %}
  {{ super() }}
 {% block title %}
@@ -8,13 +9,13 @@
 {% block content %}
 <body>
 
-<h3>{{ session.name }}, after {{ count }} votes, the results are in for group ID <div class=emphasis>{{ session.groupname }}</div>!</h3><br>
+<h3>{{ session.name }}, after {{ count }}, the results are in for group ID <div class=emphasis>{{ session.groupname }}</div>!</h3><br>
 
 <center><table id="yourpreferences">
 <tbody>
 <tr>
 <td>The most popular cuisines for the group were: </td>
-<td> {{ cuisine }}</td>
+<td> {{ group_cuisine }}</td>
 </tr>
 <tr>
 <td>The maximum mutual price level was:</td>
@@ -22,13 +23,14 @@
 </tr>
 <tr>
 <td>The mutual distance range from {{ session.city }}, {{ session.state }} was: </td>
-<td>{{ radiusinmiles }}</td>
+<td>{{ radius_in_miles }}</td>
 </tr>
 </tbody>
 </table></center>
 
 
-    We found <div id="results_count">{{ searchresults }}</div> restaurants that matched your criteria.
+    We found <div id="results_count">{{ searchresults }}</div> restaurants that matched your criteria. Here they are, sorted by Yelp rating!
+    <p id="zero">{{ zero }}</p>
 <br>
 
 
@@ -41,36 +43,37 @@
       <th>Image</th>
     </tr>
     <tr class=results>
-      <td class="namecolumn"><a href= {{ allresults['0link'] }}>{{ allresults['0name'] }} </a></td>
-      <td>{{ allresults['0rating'] }} </td> 
-      <td>{{ allresults['0price'] }}</td>
-      <td class="resultimage"><img src= {{ allresults['0image'] }} class="resultimage"></td>
+      <td class="namecolumn"><a href= {{ url[0] }}>{{ business_names[0] }} </a></td>
+      <td>{{ rating[0] }} </td> 
+      <td>{{ price[0] }}</td>
+      <td class="resultimage"><img src= {{ image_url[0] }} class="resultimage"></td>
     </tr>
     <tr class=results>
-      <td class="namecolumn"><a href= {{ allresults['1link'] }}>{{ allresults['1name'] }} </a></td>
-      <td>{{ allresults['1rating'] }} </td> 
-      <td>{{ allresults['1price'] }}</td>
-      <td class="resultimage"><img src= {{ allresults['1image'] }} class="resultimage"></td>
+      <td class="namecolumn"><a href= {{ url[1] }}>{{ business_names[1] }} </a></td>
+      <td>{{ rating[1] }} </td> 
+      <td>{{ price[1] }}</td>
+      <td class="resultimage"><img src= {{ image_url[1] }} class="resultimage"></td>
     </tr>
     <tr class=results>
-      <td class="namecolumn"><a href= {{ allresults['2link'] }}>{{ allresults['2name'] }} </a></td>
-      <td>{{ allresults['2rating'] }} </td> 
-      <td>{{ allresults['2price'] }}</td>
-      <td class="resultimage"> <img src= {{ allresults['2image'] }} class="resultimage"></td>
+      <td class="namecolumn"><a href= {{ url[2] }}>{{ business_names[2] }} </a></td>
+      <td>{{ rating[2] }} </td> 
+      <td>{{ price[2] }}</td>
+      <td class="resultimage"> <img src= {{ image_url[2] }} class="resultimage"></td>
     </tr>
     <tr class=results>
-      <td class="namecolumn"><a href= {{ allresults['3link'] }}>{{ allresults['3name'] }} </a></td>
-      <td>{{ allresults['3rating'] }} </td> 
-      <td>{{ allresults['3price'] }}</td>
-      <td class="resultimage"><img src= {{ allresults['3image'] }} class="resultimage"></td>
+      <td class="namecolumn"><a href= {{ url[3] }}>{{ business_names[3] }} </a></td>
+      <td>{{ rating[3] }} </td> 
+      <td>{{ price[3] }}</td>
+      <td class="resultimage"><img src= {{ image_url[3] }} class="resultimage"></td>
     </tr>
     <tr class=results>
-      <td class="namecolumn"><a href= {{ allresults['4link'] }}>{{ allresults['4name'] }} </a></td>
-      <td>{{ allresults['4rating'] }} </td> 
-      <td>{{ allresults['4price'] }}</td>
-      <td class="resultimage"><img src= {{ allresults['4image'] }} class="resultimage"></td>
-    </tr> 
+      <td class="namecolumn"><a href= {{ url[4] }}>{{ business_names[4] }} </a></td>
+      <td>{{ rating[4] }} </td> 
+      <td>{{ price[4] }}</td>
+      <td class="resultimage"><img src= {{ image_url[4] }} class="resultimage"></td>
+    </tr>
   </table>
+
   <br>  <br>
     <p><a href= /preferences id="restart">Not satisfied? Click here to search again.</a></p>
 {% endblock %}

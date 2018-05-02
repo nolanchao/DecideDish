@@ -1,14 +1,14 @@
 <!-- 1. extend from base-->
-
 {% extends "base.html" %}
- {{ super() }}
+{{ super() }}
+
 {% block title %}
 	Preferences
 {% endblock %}
 
 <!-- 2. extend content here from base -->
 {% block content %}
-<h1>{{ session.name }}, dining in {{ session.city }}, {{ session.state }} ? You're VIP!</h1>
+<h1>{{ session.name }}, dining in {{ session.city }}, {{ session.state }}? You're VIP!</h1>
 <div class="main-container">
 	<div class="center-container">
 	<form action = "/personalpreferences" method = "POST">
@@ -25,19 +25,19 @@
 					    <div class="ui-state-default">French 🇫🇷</div>
 					    <div class="ui-state-default">Diners 🍽</div>
 					    <div class="ui-state-default">Burgers 🍔</div>
-					    <div class="ui-state-default">Barbeque 🔥 </div>
+					    <div class="ui-state-default">Barbecue 🔥 </div>
 					    <div class="ui-state-default">Ramen 🍜</div>
 					</div>
 
 				<table id="preferences_selector">
 				<tbody>
 					<tr>
-						<td><label class="survey-item sm-label">What's your price range?</label></td>
+						<td><label class="survey-item sm-label">What's your max price range?</label></td>
 						<td><input type="range" id="priceInput" name="priceInput" step="1" min="1" max="4" value="1">
 						<td><label id="pricerangeText" class="unit_label"></label></td>
 					</tr>
 					<tr>
-						<td><label class="survey-item sm-label">What's your distance range?</label></td>
+						<td><label class="survey-item sm-label">What's your max distance range from {{ session.city }}, {{ session.state }}?</label></td>
 						<td><input type="range" id="rangeInput" name="rangeInput" step=".5" min=".5" max="20" value="5"></td>
 						<td class="unit_label"><label id="distancerangeText"></label> mi</td>
 					</tr>

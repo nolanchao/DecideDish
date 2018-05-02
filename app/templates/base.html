@@ -10,6 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" media="(max-width: 400px) and (min-width: 1px)" href="{{ url_for('static', filename='mobile.css') }}"> 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118311929-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118311929-1');
+  </script>
 
 <!-- how to extend header to other templates -->
     <div id="site-title-wrapper">
@@ -19,7 +28,7 @@
       <h3 id="site-title">Where2Eat </h3>
       </div>
       <div id="rightheader">
-        <a href="/restart" id="logout"> Logout</a>
+        <p id="logged_in_as">{{ session.name }}, Group {{ session.groupname }} </p><p><a href="/restart" id="logout"> Logout</a></p>
       </div>
     </div>
   </head>
