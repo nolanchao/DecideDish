@@ -18,4 +18,5 @@
 Nolan Chao, Eric Huynh, David Huh
 
 ## Shout-outs
-INFO290T Full-Stack Dev instructors, Parv, Daniel and Carlo!
+* INFO290T Full-Stack Dev instructors, Parv, Daniel and Carlo!
+* Selectable for making JS UI easier and prettier!
