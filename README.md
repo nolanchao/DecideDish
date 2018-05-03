@@ -5,7 +5,7 @@
 * Download (of course)
 * Obtain API Key from Yelp via https://www.yelp.com/developers/documentation/v3/get_started
 * Plug said key into views.py
-* Run sqlite3 app.db < schema.sql command
+* Run command
 > sqlite3 app.db < schema.sql
 * Run command
 > python run.py
