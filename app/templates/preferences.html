@@ -1,4 +1,4 @@
-<!-- 1. extend from base-->
+<!-- extends from base -->
 {% extends "base.html" %}
 {{ super() }}
 
@@ -6,7 +6,7 @@
 	Preferences
 {% endblock %}
 
-<!-- 2. extend content here from base -->
+<!-- content -->
 {% block content %}
 <h1>{{ session.name }}, dining in {{ session.city }}, {{ session.state }}? You're VIP!</h1>
 <div class="main-container">

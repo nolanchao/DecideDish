@@ -1,11 +1,11 @@
-<!-- 1. extend from base-->
+<!-- extends from base -->
 {% extends "base.html" %}
  {{ super() }}
 {% block title %}
     Results
 {% endblock %}
 
-<!-- 2. extend content here from base -->
+<!-- content -->
 {% block content %}
 <body>
 
@@ -31,47 +31,24 @@
 
     We found <div id="results_count">{{ searchresults }}</div> restaurants that matched your criteria. Here they are, sorted by Yelp rating!
     <p id="zero">{{ zero }}</p>
-<br>
-
 
 
   <table class="resultstable">
+
     <tr id=header>
       <th>Name</th>
       <th>Rating</th> 
       <th>Price</th>
       <th>Image</th>
     </tr>
+        {% for item in list_of_restaurants %}
     <tr class=results>
-      <td class="namecolumn"><a href= {{ url[0] }}>{{ business_names[0] }} </a></td>
-      <td>{{ rating[0] }} </td> 
-      <td>{{ price[0] }}</td>
-      <td class="resultimage"><img src= {{ image_url[0] }} class="resultimage"></td>
+      <td class="namecolumn"><a href= {{ item.url }}>{{item.names}} </a></td>
+      <td>{{item.rating}}</td> 
+      <td>{{item.price}}</td>
+      <td class="resultimage"><img src= {{ item.image_url }} class="resultimage"></td>
     </tr>
-    <tr class=results>
-      <td class="namecolumn"><a href= {{ url[1] }}>{{ business_names[1] }} </a></td>
-      <td>{{ rating[1] }} </td> 
-      <td>{{ price[1] }}</td>
-      <td class="resultimage"><img src= {{ image_url[1] }} class="resultimage"></td>
-    </tr>
-    <tr class=results>
-      <td class="namecolumn"><a href= {{ url[2] }}>{{ business_names[2] }} </a></td>
-      <td>{{ rating[2] }} </td> 
-      <td>{{ price[2] }}</td>
-      <td class="resultimage"> <img src= {{ image_url[2] }} class="resultimage"></td>
-    </tr>
-    <tr class=results>
-      <td class="namecolumn"><a href= {{ url[3] }}>{{ business_names[3] }} </a></td>
-      <td>{{ rating[3] }} </td> 
-      <td>{{ price[3] }}</td>
-      <td class="resultimage"><img src= {{ image_url[3] }} class="resultimage"></td>
-    </tr>
-    <tr class=results>
-      <td class="namecolumn"><a href= {{ url[4] }}>{{ business_names[4] }} </a></td>
-      <td>{{ rating[4] }} </td> 
-      <td>{{ price[4] }}</td>
-      <td class="resultimage"><img src= {{ image_url[4] }} class="resultimage"></td>
-    </tr>
+    {% endfor %}
   </table>
 
   <br>  <br>

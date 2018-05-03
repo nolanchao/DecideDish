@@ -1,4 +1,4 @@
-<!-- 1. extend from base-->
+<!-- extends from base -->
 {% extends "base.html" %}
 {{ super() }}
 
@@ -33,16 +33,14 @@
 	<p>2. Enter your name{{ group_decision_required }} and vote for your preferences.</p>
 	<p>3. After everyone votes, see what the group wants!</p>
 	<br>
+	<!-- Conditional messagess -->
 	<p>{{ group_count_status }}	{{ group_voting_status }}</p>
 		<div class= {{ hidden }} ><a href= {{ groupname }}/results id="results">Click here to see your group's results!</a></div>
 	</div>
 </div>
 <br>
 <div class="main-container">
-
-	<!-- 3. needs to modify the form attributes here -->
 	<form action = "/preferences" method = "POST"> 
-		<!-- 4. add some input/labels here -->
 		<center><table id="login_table">
 			<tbody>
 				<tr>

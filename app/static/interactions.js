@@ -1,22 +1,5 @@
 
 
-var rangeValues =
-{
-    "1": "$",
-    "2": "$$",
-    "3": "$$$",
-    "4": "$$$$"
-};
-
-var distancerangeValues =
-{
-    ".5": "$",
-    "1": "$$",
-    "1.5": "$$$",
-    "4": "$$$$"
-};
-
-
 function myFunction() {
   /* Get the text field */
   var copyText = document.getElementById("myInput");
@@ -28,8 +11,9 @@ function myFunction() {
   alert('Link copied. ' + copyText.value + '\n\nNow you can paste and share with your friends!');
 };
 
-var copy = function(elementId) {
 
+var copy = function(elementId) {
+    /* For iOS copy and paste functionality. */
     var input = document.getElementById(elementId);
     var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
 
@@ -60,6 +44,16 @@ var copy = function(elementId) {
 }
 
 
+  /* For front-end translation for the slider labels. */
+var rangeValues =
+{
+    "1": "$",
+    "2": "$$",
+    "3": "$$$",
+    "4": "$$$$"
+};
+
+  /* For front-end translation for the slider labels. */
 $(document).ready(function () {
 
     // on page load, set the text of the label based the value of the range
@@ -71,8 +65,6 @@ $(document).ready(function () {
     });
 
 });
-
-
 
 $(document).ready(function () {
 
@@ -86,6 +78,7 @@ $(document).ready(function () {
 
 });
 
+  /* For front-end translation for the slider labels. */
 var distancerangevalues =
 {
     "804": ".5mi",
@@ -95,6 +88,7 @@ var distancerangevalues =
     "16080": "10mi"
 };
 
+  /* For front-end translation for the slider labels. */
 $(document).ready(function () {
 	var selectedVals = [];
     $('.ui-selected').each(function(k,v) {
@@ -112,7 +106,7 @@ $(document).ready(function () {
 
 });
 
-
+/* For more aesthetically pleasing cuisine selection. */
 var _selectRange = false, _deselectQueue = [];
 $(function() {
     $( "#selectable" ).selectable({
@@ -159,13 +153,3 @@ $('#selectable').click(function() {
     console.log(selectedVals);
 });
 
-
-$(document).ready(function RowHider () {
-
-  var results_count = parseInt(document.getElementById("results_count").innerHTML);
-  var row_count = results_count+3;
-  console.log(results_count);
-  console.log(row_count);
-    $("tr:gt(" + row_count + ")").hide();
-
-});

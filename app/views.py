@@ -12,6 +12,8 @@ import string
 
 app.secret_key = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
+API_KEY = "PUT THE API KEY HERE"
+
 @app.route('/')
 def onboard():
     # As soon as someone goes onto the app site, they either be redirected to eithe the preferences page or
@@ -68,6 +70,7 @@ def dynamicgroup(groupname):
 
 @app.route('/preferences', methods = ['GET','POST'])
 def preferences():
+    
     # User now fills out their cuisine, their spend preferences, and travel preferences.
     if request.method == 'GET':
         # This is if someone clicks "Go back" on the personal preferences page because of a data entry error.
@@ -78,6 +81,7 @@ def preferences():
         # We delete the previous vote to avoid duplicate votes from the same user.
         delete_vote(groupname, name)   
         return render_template('preferences.html', groupname=groupname)
+    
     if request.method == 'POST':
         session['groupname'] = request.form['groupname']
         session['name'] = request.form['name']
@@ -102,7 +106,6 @@ def personalpreferences():
         city = session['city']
         groupname = session['groupname']
         name = session['name']
-
 
         # Yelp's API is based on meters. The front end is in miles so we change the radius to meters for hte backend..
         rangeInputSign = request.form['rangeInput'] + ' mi'
@@ -163,7 +166,7 @@ def personalpreferences():
         # Inserts scores for each cusine type into SQLite3.
         insert_preferences(groupname, name, cuisine, priceInput, radius, chinese, pizza, mexican, italian, ethiopian, sandwiches, steak, french, diners, burgers, barbecue, ramen)
         
-        # Establishes vote count so that we can 
+        # Establishes vote count so that we can send voe statuses.
         count = vote_count(groupname)
         if count == 1:
             count = "you're the only one that's voted so far. Click here to see where we'd pick for a party of 1."
@@ -171,6 +174,7 @@ def personalpreferences():
             count = "you and one of your friends have voted so far. Click here for the group results!"
         else: count = ("we have ") + str(count) + (" total votes in the group so far. Click here for the group results!")
         return render_template('personalpreferences.html', priceInput=priceInput, radius=radius, priceInputSign=priceInputSign, rangeInputSign=rangeInputSign, cuisine=cuisine, count=count, groupname=groupname)
+    
     # Here, you need to have logic like if there's a post request method, store the term and email from the form into
     # session dictionary
     if request.method == 'GET':
@@ -188,12 +192,14 @@ def results():
     if request.method == 'POST':
         return render_template('page_not_found.html'), 404
     if request.method == 'GET':
+        
         # group_prefs goes back into database, retrieves groups preferences, renders the mutual preferences, and stores it for the API
         group_prefs = retrieve_prefs([0],[0],[0])
         group_cuisine = (group_prefs[0])
         group_radius = (group_prefs[1])
         group_price = (group_prefs[2])
         pprint.pprint(group_cuisine)
+        
         # This is now the API call to Yelp.
         url = "https://api.yelp.com/v3/businesses/search"
         params = {
@@ -204,7 +210,7 @@ def results():
             'radius' : group_radius
         }
         headers = {
-            "Authorization": "Bearer API_KEY_GOES_HERE",
+            "Authorization": str("Bearer "+ str(API_KEY)),
             "content-type": "application/json"
         }
         response = requests.get(url=url, params=params, headers=headers)
@@ -228,7 +234,6 @@ def results():
             count = str(vote_count(groupname)) + ( " vote")
         else: count = str(vote_count(groupname)) + ( " votes")
 
-
         # Counts the number of results.
         searchresults = data['total']
 
@@ -238,35 +243,33 @@ def results():
         else:
             zero = "🙁 You all are a picky bunch. Maybe it's time to get some new friends."
 
-
-        # Establishes a list to render for the API results.
+        # Establishes a list to render for the API results
+        list_of_restaurants = []
         business_names = []
         image_url = []
         rating = []
         price = []
         url = []
 
+        # Conditionals to list index errors and also information overload.
         if 0 < searchresults < 5:
-            for n in range(0,searchresults):
-                business_names.append(data['businesses'][n]['name'])
-                image_url.append(data['businesses'][n]['image_url'])                
-                rating.append(data['businesses'][n]['rating'])
-                price.append(data['businesses'][n]['price'])
-                url.append(data['businesses'][n]['url'])
-                pprint.pprint(business_names)
+            max = searchresults
         elif searchresults > 5:
-            for n in range(0,5):
-                business_names.append(data['businesses'][n]['name'])
-                image_url.append(data['businesses'][n]['image_url'])                
-                rating.append(data['businesses'][n]['rating'])
-                price.append(data['businesses'][n]['price'])
-                url.append(data['businesses'][n]['url'])
-                pprint.pprint(business_names)
-                list = {}
-        else: 
-            business_names = image_url = rating = price = url = ["n/a"]
+            max = 5
+        else: max = 0
 
-        return render_template('results.html',data=data, searchresults=searchresults, priceInputSign=priceInputSign, group_cuisine=group_cuisine, radius_in_miles=radius_in_miles, count=count, zero=zero, business_names=business_names, image_url=image_url, url=url, rating=rating, price=price)
+        # Dictionary time.
+        for i in range(0, max):
+            business_names = data['businesses'][i]['name']
+            image_url = data['businesses'][i]['image_url']             
+            rating = data['businesses'][i]['rating']
+            price = data['businesses'][i]['price']
+            url = data['businesses'][i]['url']
+            i = int(i) 
+            restaurant_result = dict(names=business_names, image_url=image_url, rating=rating, price=price, url=url)
+            list_of_restaurants.append(restaurant_result)
+
+        return render_template('results.html',data=data, searchresults=searchresults, priceInputSign=priceInputSign, group_cuisine=group_cuisine, radius_in_miles=radius_in_miles, count=count, zero=zero, business_names=business_names, image_url=image_url, url=url, rating=rating, price=price, list_of_restaurants=list_of_restaurants)
 
 @app.route('/restart')
 def restart():
