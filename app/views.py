@@ -12,7 +12,7 @@ import string
 
 app.secret_key = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
-API_KEY = "PUT THE API KEY HERE"
+API_KEY = "API KEY GOES HERE"
 
 @app.route('/')
 def onboard():
@@ -198,7 +198,7 @@ def results():
         group_cuisine = (group_prefs[0])
         group_radius = (group_prefs[1])
         group_price = (group_prefs[2])
-        pprint.pprint(group_cuisine)
+        pprint.pprint(type(group_radius))
         
         # This is now the API call to Yelp.
         url = "https://api.yelp.com/v3/businesses/search"
@@ -218,8 +218,7 @@ def results():
         pprint.pprint ("Yelp API is being called.")
 
         # Changes group_radius back to miles for the  front end.
-        radius_in_miles = str(round(0.000621371*group_radius,2))+str(" miles")
-
+        radius_in_miles = str(round((0.00062) * (group_radius),0))+" mi"
         # Changes group_price back to $ signs for the front end.
         if '4' in group_price:
             priceInputSign = '$$$$'
