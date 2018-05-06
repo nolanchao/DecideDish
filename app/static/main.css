@@ -232,8 +232,6 @@ input[type=range]::-webkit-slider-runnable-track {
 	line-height: 1.4;
 }
 
-
-
 .resultstable, td, tr, th {
 	text-align: center;
 	border: 1px solid black;
@@ -241,6 +239,21 @@ input[type=range]::-webkit-slider-runnable-track {
 	font-size: 18px;
 	object-fit: contain;
 	object-position: right top;
+}
+
+.results img {
+	width: 200px;
+  	height: 200px;
+}
+
+.resultimage td {
+	height: 200px;
+}
+
+.resultimage img {
+	max-width: auto;
+  	max-height: 100%;
+  	object-fit: cover;
 }
 
 th {
@@ -384,10 +397,7 @@ th {
     padding: 3px;
 }
 
-.resultimage {
-	width: 200px;
-  	height: 150px;
-}
+
 
 .emoji {
 	width: 12px;
@@ -435,3 +445,10 @@ p.results {
 	margin-top: 10px;
 	font-weight: bold;
 }
+
+.namecolumn {
+	text-decoration: underline;
+	font-weight: bold;
+	padding: 3px;
+}
+
