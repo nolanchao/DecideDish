@@ -32,9 +32,19 @@ footer {
 	margin-top: 1em;
 }
 
-.resultimage {
+.results img {
 	width: 100px;
-	height: 75px;
+  	height: 100px;
+}
+
+.resultimage td {
+	height: 200px;
+}
+
+.resultimage img {
+	max-width: auto;
+  	max-height: 100%;
+  	object-fit: cover;
 }
 
 .namecolumn {
